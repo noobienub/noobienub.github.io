@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loves Gays</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+    <form>
+        <!-- Gender Range -->
+        <div class="containerInput">
+            <div>
+
+                <div class="containerRange">
+                    <label for="rangeFemale">Female</label>
+                    <input id="rangeFemale" type="range" name="rangeFemale" class="rangeFemale" min="1" max="100" step="-1" value="1" oninput="userRangeFemale(this.value)" onchange="userRangeFemale(this.value)">
+                </div>
+
+                <div class="containerRange">
+                    <label for="rangeMale">Male</label>
+                    <input id="rangeMale" type="range" name="rangeMale" class="rangeMale" min="1" max="100" step="-1" value="1" oninput="userRangeMale(this.value)" onchange="userRangeMale(this.value)">
+                </div>
+
+            </div>
+
+            <div class="result" id="resultsGender"></div>
+        </div>
+
+        <!-- Sex Range -->
+        <div class="containerInput">
+            <div>
+
+                <div class="containerRange">
+                    <label for="rangeFeminine">Feminine</label>
+                    <input id="rangeFeminine" type="range" name="rangeFeminine" min="1" max="100" step="-1" value="1" oninput="userRangeFeminine(this.value)" onchange="userRangeFeminine(this.value)">
+                </div>
+
+                <div class="containerRange">
+                    <label for="rangeMasculine">Masculine</label>
+                    <input id="rangeMasculine" type="range" name="rangeMasculine" min="1" max="100" step="-1" value="1" oninput="userRangeMasculine(this.value)" onchange="userRangeMasculine(this.value)">
+                </div>
+
+            </div>
+
+            <div class="result" id="resultsSex"></div>
+        </div>
+
+        <!-- Sexuality Range -->
+        <div class="containerInput">
+            <div>
+
+                <div class="containerRange">
+                    <label for="rangeIntoWomen">interested in women</label>
+                    <input id="rangeIntoWomen" type="range" name="rangeIntoWomen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoWomen(this.value)" onchange="userRangeIntoWomen(this.value)">
+                </div>
+
+                <div class="containerRange">
+                    <label for="rangeIntoMen">interested in men</label>
+                    <input id="rangeIntoMen" type="range" name="rangeIntoMen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoMen(this.value)" onchange="userRangeIntoMen(this.value)">
+                </div>
+
+            </div>
+
+            <div class="result" id="resultsSexuality"></div>
+        </div>
+    </form>
+
+    <button onclick="submitEntry()">Submit</button>
+
+    <div id="containerEntries">
+
+    </div>
+
+    <script>
+        var data;
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', '/storage/data.json', true);
+        xhr.responseType = 'json';
+
+        xhr.onload = function (e) {
+            if (this.status == 200) {
+                data = xhr.response;
+                entryCounter = Object.keys(data).length;
+
+                populatePreviousEntries();
+            }
+        };
+
+        xhr.send();
+        
+        function colour(chnRed, chnGreen, chnBlue) {
+            this.decToHexConverter = function () {
+                return ("#" + this.red.toString(16) + this.green.toString(16) + this.blue.toString(16)).toUpperCase();
+            }
+
+            this.setRGB = function (red, green, blue) {
+                this.red = red;
+                this.green = green;
+                this.blue = blue;
+                this.rgbHex = this.decToHexConverter();
+            }
+
+            // Attributes
+            this.red = chnRed;
+            this.green = chnGreen;
+            this.blue = chnBlue;
+            this.rgbHex = this.decToHexConverter();
+        }
+
+        function gradientPointCalculator(channelDec, divider, point) {
+            return Math.floor(255 - (point * (255 - channelDec) / divider));
+        }
+
+        function colourBlendingCalculator(colour1, colour2) {
+            var colourBlended = new colour(Math.floor((colour1.red + colour2.red) / 2), Math.floor((colour1.green + colour2.green) / 2), Math.floor((colour1.blue + colour2.blue) / 2));
+
+            return colourBlended.rgbHex;
+        }
+
+        var DIVIDER = 100,
+            COLOURFEMALE = new colour(117, 197, 215),
+            COLOURMALE = new colour(119, 195, 98),
+            COLOURFEMININE = new colour(246, 215, 36),
+            COLOURMASCULINE = new colour(244, 140, 34),
+            COLOURINTOWOMEN = new colour(234, 102, 162),
+            COLOURINTOMEN = new colour(108, 102, 234),
+            usersFemale = new colour(255, 255, 255),
+            usersMale = new colour(255, 255, 255),
+            usersFeminine = new colour(255, 255, 255),
+            usersMasculine = new colour(255, 255, 255),
+            usersIntoWomen = new colour(255, 255, 255),
+            usersIntoMen = new colour(255, 255, 255),
+            usersGender = "#FFF",
+            usersSex = "#FFF",
+            usersSexuality = "#FFF",
+            entryCounter,
+            rangeFemale = document.getElementById("rangeFemale"),
+            rangeMale = document.getElementById("rangeMale"),
+            rangeFeminine = document.getElementById("rangeFeminine"),
+            rangeMasculine = document.getElementById("rangeMasculine"),
+            rangeIntoWomen = document.getElementById("rangeIntoWomen"),
+            rangeIntoMen = document.getElementById("rangeIntoMen");
+
+        function userRangeFemale(userInput) {
+            usersFemale.setRGB(gradientPointCalculator(COLOURFEMALE.red, DIVIDER, userInput), gradientPointCalculator(COLOURFEMALE.green, DIVIDER, userInput), gradientPointCalculator(COLOURFEMALE.blue, DIVIDER, userInput));
+
+            usersGender = colourBlendingCalculator(usersFemale, usersMale);
+
+            document.getElementById("resultsGender").style.background = usersGender;
+        }
+
+        function userRangeMale(userInput) {
+            usersMale.setRGB(gradientPointCalculator(COLOURMALE.red, DIVIDER, userInput), gradientPointCalculator(COLOURMALE.green, DIVIDER, userInput), gradientPointCalculator(COLOURMALE.blue, DIVIDER, userInput));
+
+            usersGender = colourBlendingCalculator(usersFemale, usersMale);
+
+            document.getElementById("resultsGender").style.background = usersGender;
+        }
+
+        function userRangeFeminine(userInput) {
+            usersFeminine.setRGB(gradientPointCalculator(COLOURFEMININE.red, DIVIDER, userInput), gradientPointCalculator(COLOURFEMININE.green, DIVIDER, userInput), gradientPointCalculator(COLOURFEMININE.blue, DIVIDER, userInput));
+
+            usersSex = colourBlendingCalculator(usersFeminine, usersMasculine);
+
+            document.getElementById("resultsSex").style.background = usersSex;
+        }
+
+        function userRangeMasculine(userInput) {
+            usersMasculine.setRGB(gradientPointCalculator(COLOURMASCULINE.red, DIVIDER, userInput), gradientPointCalculator(COLOURMASCULINE.green, DIVIDER, userInput), gradientPointCalculator(COLOURMASCULINE.blue, DIVIDER, userInput));
+
+            usersSex = colourBlendingCalculator(usersFeminine, usersMasculine);
+
+            document.getElementById("resultsSex").style.background = usersSex;
+        }
+
+        function userRangeIntoWomen(userInput) {
+            usersIntoWomen.setRGB(gradientPointCalculator(COLOURINTOWOMEN.red, DIVIDER, userInput), gradientPointCalculator(COLOURINTOWOMEN.green, DIVIDER, userInput), gradientPointCalculator(COLOURINTOWOMEN.blue, DIVIDER, userInput));
+
+            usersSexuality = colourBlendingCalculator(usersIntoWomen, usersIntoMen);
+
+            document.getElementById("resultsSexuality").style.background = usersSexuality;
+        }
+
+        function userRangeIntoMen(userInput) {
+            usersIntoMen.setRGB(gradientPointCalculator(COLOURINTOMEN.red, DIVIDER, userInput), gradientPointCalculator(COLOURINTOMEN.green, DIVIDER, userInput), gradientPointCalculator(COLOURINTOMEN.blue, DIVIDER, userInput));
+
+            usersSexuality = colourBlendingCalculator(usersIntoWomen, usersIntoMen);
+
+            document.getElementById("resultsSexuality").style.background = usersSexuality;
+        }
+
+        function resetUsersInputs() {
+            usersFemale.setRGB(255, 255, 255);
+            usersMale.setRGB(255, 255, 255);
+            usersFeminine.setRGB(255, 255, 255);
+            usersMasculine.setRGB(255, 255, 255);
+            usersIntoWomen.setRGB(255, 255, 255);
+            usersIntoMen.setRGB(255, 255, 255);
+
+            usersGender = "#FFF";
+            usersSex = "#FFF";
+            usersSexuality = "#FFF";
+
+            rangeFemale.value = 1;
+            rangeMale.value = 1;
+            rangeFeminine.value = 1;
+            rangeMasculine.value = 1;
+            rangeIntoWomen.value = 1;
+            rangeIntoMen.value = 1;
+        }
+
+        function submitEntry() {
+            entryCounter++;
+
+            createRow("entry" + entryCounter, entryCounter, usersGender, usersSex, usersSexuality);
+
+            data["entry" + entryCounter] = {
+                "gender": usersGender,
+                "sex": usersSex,
+                "sexuality": usersSexuality
+            };
+
+            resetUsersInputs();
+
+            writeFile(data);
+        }
+
+        function writeFile(data) {
+            var json = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/storage/', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            xhr.onload = function (e) {
+                if (this.status == 200) {
+                    console.log(this.response);
+                }
+            };
+
+            xhr.send(json);
+        }
+
+        function createRow(rowID, index, gender, sex, sexuality) {
+            var entriesContainer = document.getElementById("containerEntries"),
+                newEntry = document.createElement("div"),
+                newEntryGender = document.createElement("div"),
+                newEntrySex = document.createElement("div"),
+                newEntrySexuality = document.createElement("div");
+
+            newEntry.className = "userEntry";
+            newEntry.id = rowID;
+
+            newEntryGender.className = "usersResult";
+            newEntrySex.className = "usersResult";
+            newEntrySexuality.className = "usersResult";
+
+            newEntryGender.style.background = gender;
+            newEntrySex.style.background = sex;
+            newEntrySexuality.style.background = sexuality;
+
+            if (rowID === "entry1")
+                entriesContainer.appendChild(newEntry);
+
+            else {
+                index -= 1;
+                entriesContainer.insertBefore(newEntry, document.getElementById("entry" + index));
+            }
+
+            newEntry.appendChild(newEntryGender);
+            newEntry.appendChild(newEntrySex);
+            newEntry.appendChild(newEntrySexuality);
+        }
+
+        function populatePreviousEntries() {
+            var tempCounter = entryCounter;
+            for (var i = 1; i <= tempCounter; i++) {
+                usersGender = data["entry" + i].gender;
+                usersSex = data["entry" + i].sex;
+                usersSexuality = data["entry" + i].sexuality;
+
+                createRow("entry" + i, i, usersGender, usersSex, usersSexuality);
+            }
+
+            resetUsersInputs();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{
+    "entry1": {
+        "gender": "#AEDCD6",
+        "sex": "#F9C981",
+        "sexuality": "#CD8FCF"
+    },
+    
+    "entry2": {
+        "gender": "#B6DFD2",
+        "sex": "#F9DA8F",
+        "sexuality": "#CAACE4"
+    },
+    
+    "entry3": {
+        "gender": "#8DCDB0",
+        "sex": "#F8DA79",
+        "sexuality": "#DAA0D3"
+    },
+    
+    "entry4": {
+        "gender": "#F0F8F3",
+        "sex": "#FDF8E9",
+        "sexuality": "#FEF9FB"
+    }
+}

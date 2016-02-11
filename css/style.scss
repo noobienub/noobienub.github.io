@@ -1,0 +1,156 @@
+// Variables
+// Colours
+$colourWhite: #FFF;
+$colourFemale: #75C5D7;
+$colourMale: #77C362;
+$colourFeminine:#F6D724;
+$colourMasculine: #F48C22;
+$colourIntoWomen: #EA66A2;
+$colourIntoMen: #6C66EA;
+$colourInputThumbShadow: rgba(0, 0, 0, 0.3);
+
+// Font
+$fontBase: 1.2vw;
+
+// Mixins
+@mixin dropShadow($shadowColour) {
+    box-shadow: 0 1px 3px $shadowColour;
+}
+
+// Linear gradient generator
+@mixin gradientLinear($colourStart, $colourEnd) {
+    /* Safari 4-5, Chrome 1-9 */ 
+    background: -webkit-gradient(linear, left top, right top, from($colourStart), to($colourEnd)); 
+    /* Safari 5.1, Chrome 10+ */ 
+    background: -webkit-linear-gradient(left, $colourStart, $colourEnd); 
+    /* Firefox 3.6+ */ 
+    background: -moz-linear-gradient(left, $colourStart, $colourEnd); 
+    /* IE 10 */ 
+    background: -ms-linear-gradient(left, $colourStart, $colourEnd); 
+    /* Opera 11.10+ */ 
+    background: -o-linear-gradient(left, $colourStart, $colourEnd);
+}
+
+// Input range
+@mixin rangeThumb() {
+    @include dropShadow($colourInputThumbShadow);
+    width: $fontBase/1.5;
+    height: $fontBase;
+    background: $colourWhite;
+}
+
+@mixin rangeTrack($colourStart, $colourEnd) {
+    width: 8 * $fontBase;
+    height: $fontBase;
+    @include gradientLinear($colourStart, $colourEnd)
+}
+
+@mixin rangeInput($colourStart, $colourEnd) {
+    -webkit-appearance: none;
+    
+    &:focus {
+        outline: none !important;
+        border: none;
+    }
+    
+    &::-webkit-slider-runnable-track {
+    @include rangeTrack($colourStart, $colourEnd);
+  }
+  
+  &::-webkit-slider-thumb {
+    @include rangeThumb();
+    -webkit-appearance: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    //opacity: 0.5;
+  }
+}
+
+@mixin result($backgroundColour) {
+    @include dropShadow($colourInputThumbShadow);
+    order: 2;
+    margin-top: 1.5 * $fontBase;
+    width: 6 * $fontBase;
+    height: 6 * $fontBase;
+    background: $backgroundColour;
+}
+
+// Base style
+body {
+    font-size: $fontBase;
+    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+}
+
+label {
+    display: block;
+    width: 4 * $fontBase;
+    margin: 0 0 (0.5 * $fontBase) 0;
+}
+
+button {
+    @include dropShadow($colourInputThumbShadow);
+    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+    font-size: 1.2 * $fontBase;
+    margin: $fontBase 0 0 0;
+    padding: 0.5 * $fontBase;
+    text-transform: uppercase;
+    background: $colourWhite;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5 * $fontBase;
+}
+
+.containerRange {
+    display: block;
+    margin: $fontBase $fontBase 0 0;
+}
+
+#rangeFemale {
+    @include rangeInput($colourWhite, $colourFemale);
+}
+
+#rangeMale {
+    @include rangeInput($colourWhite, $colourMale);
+}
+
+#rangeFeminine {
+    @include rangeInput($colourWhite, $colourFeminine);
+}
+
+#rangeMasculine {
+    @include rangeInput($colourWhite, $colourMasculine);
+}
+
+#rangeIntoWomen {
+    @include rangeInput($colourWhite, $colourIntoWomen);
+}
+
+#rangeIntoMen {
+    @include rangeInput($colourWhite, $colourIntoMen)
+}
+
+.result {
+    @include result($colourWhite);
+}
+
+#containerEntries {
+    width: 100%;
+    height: auto;
+    margin: $fontBase 0 0 0;
+    border-top: rgba(0, 0, 0, 0.3) 1px solid;
+}
+
+.userEntry {
+    display: flex;
+    flex-direction: row;
+}
+
+.usersResult {
+    display: inline-flex;
+    width: (100%/3);
+    height: 5 * $fontBase;
+}

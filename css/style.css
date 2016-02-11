@@ -1,0 +1,234 @@
+/* line 80, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+body {
+  font-size: 1.2vw;
+  font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; }
+
+/* line 85, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+label {
+  display: block;
+  width: 4.8vw;
+  margin: 0 0 0.6vw 0; }
+
+/* line 91, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+button {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+  font-size: 1.44vw;
+  margin: 1.2vw 0 0 0;
+  padding: 0.6vw;
+  text-transform: uppercase;
+  background: #FFF; }
+
+/* line 101, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+.containerInput {
+  display: flex;
+  flex-direction: row;
+  padding: 0.6vw; }
+
+/* line 107, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+.containerRange {
+  display: block;
+  margin: 1.2vw 1.2vw 0 0; }
+
+/* line 112, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeFemale {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFemale:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFemale::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#75C5D7));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #75C5D7);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #75C5D7);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #75C5D7);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #75C5D7); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFemale::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 116, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeMale {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMale:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMale::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#77C362));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #77C362);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #77C362);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #77C362);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #77C362); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMale::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 120, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeFeminine {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFeminine:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFeminine::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#F6D724));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #F6D724);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #F6D724);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #F6D724);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #F6D724); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeFeminine::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 124, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeMasculine {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMasculine:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMasculine::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#F48C22));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #F48C22);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #F48C22);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #F48C22);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #F48C22); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeMasculine::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 128, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeIntoWomen {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoWomen:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoWomen::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#EA66A2));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #EA66A2);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #EA66A2);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #EA66A2);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #EA66A2); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoWomen::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 132, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#rangeIntoMen {
+  -webkit-appearance: none; }
+  /* line 51, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoMen:focus {
+    outline: none !important;
+    border: none; }
+  /* line 56, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoMen::-webkit-slider-runnable-track {
+    width: 9.6vw;
+    height: 1.2vw;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from(#FFF), to(#6C66EA));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, #FFF, #6C66EA);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, #FFF, #6C66EA);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, #FFF, #6C66EA);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(left, #FFF, #6C66EA); }
+  /* line 60, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+  #rangeIntoMen::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 0.8vw;
+    height: 1.2vw;
+    background: #FFF;
+    -webkit-appearance: none; }
+
+/* line 136, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+.result {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  order: 2;
+  margin-top: 1.8vw;
+  width: 7.2vw;
+  height: 7.2vw;
+  background: #FFF; }
+
+/* line 140, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+#containerEntries {
+  width: 100%;
+  height: auto;
+  margin: 1.2vw 0 0 0;
+  border-top: rgba(0, 0, 0, 0.3) 1px solid; }
+
+/* line 147, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+.userEntry {
+  display: flex;
+  flex-direction: row; }
+
+/* line 152, /Users/yiwei.ting/Desktop/Work/Web Projects/lovesGays/css/style.scss */
+.usersResult {
+  display: inline-flex;
+  width: 33.33333%;
+  height: 6vw; }
+
+/*# sourceMappingURL=style.css.map */
