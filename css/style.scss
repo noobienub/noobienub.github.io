@@ -8,10 +8,8 @@ $colourMasculine: #F48C22;
 $colourIntoWomen: #EA66A2;
 $colourIntoMen: #6C66EA;
 $colourInputThumbShadow: rgba(0, 0, 0, 0.3);
-
 // Font
-$fontBase: 1.2vw;
-
+$fontBase: 1.4vw;
 // Mixins
 @mixin dropShadow($shadowColour) {
     box-shadow: 0 1px 3px $shadowColour;
@@ -19,81 +17,93 @@ $fontBase: 1.2vw;
 
 // Linear gradient generator
 @mixin gradientLinear($colourStart, $colourEnd) {
-    /* Safari 4-5, Chrome 1-9 */ 
-    background: -webkit-gradient(linear, left top, right top, from($colourStart), to($colourEnd)); 
-    /* Safari 5.1, Chrome 10+ */ 
-    background: -webkit-linear-gradient(left, $colourStart, $colourEnd); 
-    /* Firefox 3.6+ */ 
-    background: -moz-linear-gradient(left, $colourStart, $colourEnd); 
-    /* IE 10 */ 
-    background: -ms-linear-gradient(left, $colourStart, $colourEnd); 
-    /* Opera 11.10+ */ 
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left top, right top, from($colourStart), to($colourEnd));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(left, $colourStart, $colourEnd);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(left, $colourStart, $colourEnd);
+    /* IE 10 */
+    background: -ms-linear-gradient(left, $colourStart, $colourEnd);
+    /* Opera 11.10+ */
     background: -o-linear-gradient(left, $colourStart, $colourEnd);
 }
 
 // Input range
 @mixin rangeThumb() {
     @include dropShadow($colourInputThumbShadow);
-    width: $fontBase/1.5;
-    height: $fontBase;
+    width: $fontBase;
+    height: $fontBase * 2;
     background: $colourWhite;
+    border-radius: 0;
 }
 
 @mixin rangeTrack($colourStart, $colourEnd) {
-    width: 8 * $fontBase;
-    height: $fontBase;
+    width: 15 * $fontBase;
+    height: 2 * $fontBase;
     @include gradientLinear($colourStart, $colourEnd)
 }
 
 @mixin rangeInput($colourStart, $colourEnd) {
     -webkit-appearance: none;
-    
     &:focus {
         outline: none !important;
         border: none;
     }
-    
     &::-webkit-slider-runnable-track {
-    @include rangeTrack($colourStart, $colourEnd);
-  }
-  
-  &::-webkit-slider-thumb {
-    @include rangeThumb();
-    -webkit-appearance: none;
-  }
-
-  &:focus::-webkit-slider-runnable-track {
-    //opacity: 0.5;
-  }
+        @include rangeTrack($colourStart, $colourEnd);
+    }
+    &::-webkit-slider-thumb {
+        @include rangeThumb();
+        -webkit-appearance: none;
+    }
+    &:focus::-webkit-slider-runnable-track {}
+    &::-moz-range-track {
+        @include rangeTrack($colourStart, $colourEnd);
+    }
+    &::-moz-range-thumb {
+        @include rangeThumb();
+        -moz-appearance: none;
+    }
 }
 
 @mixin result($backgroundColour) {
     @include dropShadow($colourInputThumbShadow);
     order: 2;
-    margin-top: 1.5 * $fontBase;
-    width: 6 * $fontBase;
-    height: 6 * $fontBase;
+    margin-top: 2 * $fontBase;
+    width: 6.5 * $fontBase;
+    height: 6.5 * $fontBase;
     background: $backgroundColour;
 }
 
 // Base style
+html {
+    background: url(../img/placeholder.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
 body {
+    height: 100%;
     font-size: $fontBase;
-    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+    font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
 }
 
 label {
     display: block;
-    width: 4 * $fontBase;
-    margin: 0 0 (0.5 * $fontBase) 0;
+    width: 10 * $fontBase;
+    margin: 0 0 $fontBase 0;
 }
 
 button {
-    @include dropShadow($colourInputThumbShadow);
-    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+    //@include dropShadow($colourInputThumbShadow);
+    display: inline-block;
+    font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
     font-size: 1.2 * $fontBase;
-    margin: $fontBase 0 0 0;
-    padding: 0.5 * $fontBase;
+    padding: 8px 16px;
     text-transform: uppercase;
     background: $colourWhite;
 }
@@ -101,12 +111,16 @@ button {
 .containerInput {
     display: flex;
     flex-direction: row;
-    padding: 0.5 * $fontBase;
+    padding: 0.3 * $fontBase;
 }
 
 .containerRange {
     display: block;
-    margin: $fontBase $fontBase 0 0;
+    margin: ($fontBase * 0.5) ($fontBase * 0.5) 0 0;
+}
+
+.rangeWidth {
+    width: $fontBase * 15;
 }
 
 #rangeFemale {
@@ -138,10 +152,13 @@ button {
 }
 
 #containerEntries {
+    position: absolute;
+    top: 0;
     width: 100%;
-    height: auto;
-    margin: $fontBase 0 0 0;
-    border-top: rgba(0, 0, 0, 0.3) 1px solid;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 1;
+    overflow: auto;
 }
 
 .userEntry {
@@ -152,5 +169,93 @@ button {
 .usersResult {
     display: inline-flex;
     width: (100%/3);
-    height: 5 * $fontBase;
+    height: 2 * $fontBase;
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.containerInputRanges {
+    margin-right: $fontBase;
+}
+
+#leftCol {
+    display: inline-flex;
+    order: 1;
+    width: 20%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#rightCol {
+    display: inline-flex;
+    order: 2;
+    position: relative;
+    width: 80%;
+    height: auto;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+#mainButtonContainer {
+    width: 100%;
+    text-align: center;
+    height: 33%;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+    z-index: 1;
+}
+
+.show {
+    display: block;
+    z-index: 999;
+}
+
+#overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+}
+
+#overlayTitle {
+    display: inline-block;
+    margin: ($fontBase * 2) 0 0 ($fontBase * 2);
+    width: 50%;
+    font-size: $fontBase * 2.5;
+}
+
+#close {
+    float: right;
+    margin: ($fontBase * 2) ($fontBase * 2) 0 0;
+    cursor: pointer;
+    img {
+        width: $fontBase * 1.5;
+        height: $fontBase * 1.5;
+    }
+}
+
+.blur {
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+#containerRanges {
+    display: inline-block;
+    padding: $fontBase 0 0 ($fontBase * 2);
+    width: 50%;
+}
+
+#overlayButton {
+    display: inline-block;
+    vertical-align: bottom;
 }

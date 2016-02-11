@@ -1,0 +1,112 @@
+body{
+	margin:0;
+	font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans';
+}
+#main{
+	width:100%;
+	height:100%;
+}
+#background{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100%;
+}
+#background img{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+}
+#foreground{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100%;
+}
+#leftBG{
+	position:fixed;
+	top:0;
+	left:0;
+	width:20%;
+	height:100%;
+	background-color: black;
+	opacity: 0.4;
+}
+#rightBG{
+	position:fixed;
+	top:0;
+	left:20%;
+	width:80%;
+	height:100%;
+	background-color: white;
+	opacity: 0.85;
+}
+#left{
+}
+#right{
+}
+#create{
+	position: fixed;
+	top:28%;
+	margin:auto;
+	height:100%;
+	width: 20%;
+}
+.button{
+	width:50%;
+	height: 7%;
+	margin:auto;
+	background-color: white;
+	text-align: center;
+	font-size: 3vw;
+}
+#viz{}
+#entryBG{
+	position:fixed;
+	top:0;
+	left:20%;
+	width:80%;
+	height:100%;
+	background-color: white;
+	opacity: 0.55;
+}
+#entry{
+	position:fixed;
+	top:0;
+	left:20%;
+	width:80%;
+	height:100%;
+}
+
+#entryContent{
+	margin:2% 3%;
+	height:100%;
+}
+#entryContentLeft{
+	position:fixed;
+	margin:0% 0%;
+	height:100%;
+	width:40%;
+}
+.sliderBox{
+	width:100%;
+	height: 15%;
+	background-color: white;
+}
+#entryContentRight{
+	position:fixed;
+	margin:0% 2%;
+	height:100%;
+	width:40%;
+	left:60%;
+
+}
+.blendedBox{
+	margin: 0% 5%;
+	width:50%;
+	height: 15%;
+	background-color: white;
+}

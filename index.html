@@ -7,84 +7,104 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/haha.css">
 
 </head>
 
 <body>
-    <form>
-        <!-- Gender Range -->
-        <div class="containerInput">
-            <div>
 
-                <div class="containerRange">
-                    <label for="rangeFemale">Female</label>
-                    <input id="rangeFemale" type="range" name="rangeFemale" class="rangeFemale" min="1" max="100" step="-1" value="1" oninput="userRangeFemale(this.value)" onchange="userRangeFemale(this.value)">
+    <div id="mainContainer">
+        <div id="leftCol">
+            <div id="mainButtonContainer">
+                <button onclick="showOverlay()">I AM</button>
+            </div>
+        </div>
+
+        <div id="rightCol">
+            <div class="show" id="containerEntries"></div>
+
+            <div class="hidden" id="overlay">
+                <span id="overlayTitle">I am...</span>
+                <span id="close" onclick="hideOverlay()">
+                    <img src="img/close47.svg" />
+                </span>
+
+                <div id="containerRanges">
+                    <!-- Gender Range -->
+                    <div class="containerInput">
+                        <div class="containerInputRanges">
+
+                            <div class="containerRange">
+                                <label for="rangeFemale">Female</label>
+                                <input class="rangeWidth" id="rangeFemale" type="range" name="rangeFemale" class="rangeFemale" min="1" max="100" step="-1" value="1" oninput="userRangeFemale(this.value)" onchange="userRangeFemale(this.value)">
+                            </div>
+
+                            <div class="containerRange">
+                                <label class="rangeWidth" for="rangeMale">Male</label>
+                                <input class="rangeWidth" id="rangeMale" type="range" name="rangeMale" class="rangeMale" min="1" max="100" step="-1" value="1" oninput="userRangeMale(this.value)" onchange="userRangeMale(this.value)">
+                            </div>
+
+                        </div>
+
+                        <div class="result" id="resultsGender"></div>
+                    </div>
+
+                    <!-- Sex Range -->
+                    <div class="containerInput">
+                        <div class="containerInputRanges">
+
+                            <div class="containerRange">
+                                <label for="rangeFeminine">Feminine</label>
+                                <input class="rangeWidth" id="rangeFeminine" type="range" name="rangeFeminine" min="1" max="100" step="-1" value="1" oninput="userRangeFeminine(this.value)" onchange="userRangeFeminine(this.value)">
+                            </div>
+
+                            <div class="containerRange">
+                                <label for="rangeMasculine">Masculine</label>
+                                <input class="rangeWidth" id="rangeMasculine" type="range" name="rangeMasculine" min="1" max="100" step="-1" value="1" oninput="userRangeMasculine(this.value)" onchange="userRangeMasculine(this.value)">
+                            </div>
+
+                        </div>
+
+                        <div class="result" id="resultsSex"></div>
+                    </div>
+
+                    <!-- Sexuality Range -->
+                    <div class="containerInput">
+                        <div class="containerInputRanges">
+
+                            <div class="containerRange">
+                                <label for="rangeIntoWomen">interested in women</label>
+                                <input class="rangeWidth" id="rangeIntoWomen" type="range" name="rangeIntoWomen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoWomen(this.value)" onchange="userRangeIntoWomen(this.value)">
+                            </div>
+
+                            <div class="containerRange">
+                                <label for="rangeIntoMen">interested in men</label>
+                                <input class="rangeWidth" id="rangeIntoMen" type="range" name="rangeIntoMen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoMen(this.value)" onchange="userRangeIntoMen(this.value)">
+                            </div>
+
+                        </div>
+
+                        <div class="result" id="resultsSexuality"></div>
+                    </div>
                 </div>
 
-                <div class="containerRange">
-                    <label for="rangeMale">Male</label>
-                    <input id="rangeMale" type="range" name="rangeMale" class="rangeMale" min="1" max="100" step="-1" value="1" oninput="userRangeMale(this.value)" onchange="userRangeMale(this.value)">
+                <div id="overlayButton">
+                    <button onclick="submitEntry()">Submit</button>
                 </div>
 
             </div>
-
-            <div class="result" id="resultsGender"></div>
         </div>
-
-        <!-- Sex Range -->
-        <div class="containerInput">
-            <div>
-
-                <div class="containerRange">
-                    <label for="rangeFeminine">Feminine</label>
-                    <input id="rangeFeminine" type="range" name="rangeFeminine" min="1" max="100" step="-1" value="1" oninput="userRangeFeminine(this.value)" onchange="userRangeFeminine(this.value)">
-                </div>
-
-                <div class="containerRange">
-                    <label for="rangeMasculine">Masculine</label>
-                    <input id="rangeMasculine" type="range" name="rangeMasculine" min="1" max="100" step="-1" value="1" oninput="userRangeMasculine(this.value)" onchange="userRangeMasculine(this.value)">
-                </div>
-
-            </div>
-
-            <div class="result" id="resultsSex"></div>
-        </div>
-
-        <!-- Sexuality Range -->
-        <div class="containerInput">
-            <div>
-
-                <div class="containerRange">
-                    <label for="rangeIntoWomen">interested in women</label>
-                    <input id="rangeIntoWomen" type="range" name="rangeIntoWomen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoWomen(this.value)" onchange="userRangeIntoWomen(this.value)">
-                </div>
-
-                <div class="containerRange">
-                    <label for="rangeIntoMen">interested in men</label>
-                    <input id="rangeIntoMen" type="range" name="rangeIntoMen" min="1" max="100" step="-1" value="1" oninput="userRangeIntoMen(this.value)" onchange="userRangeIntoMen(this.value)">
-                </div>
-
-            </div>
-
-            <div class="result" id="resultsSexuality"></div>
-        </div>
-    </form>
-
-    <button onclick="submitEntry()">Submit</button>
-
-    <div id="containerEntries">
-
     </div>
 
     <script>
         var data;
         var xhr = new XMLHttpRequest();
 
-        xhr.open('GET', '/storage/data.json', true);
+        xhr.open('GET', 'storage/data.json', true);
         xhr.responseType = 'json';
 
         xhr.onload = function (e) {
-            if (this.status == 200) {
+            if (this.status == 200 || this.status == 0) {
                 data = xhr.response;
                 entryCounter = Object.keys(data).length;
 
@@ -92,8 +112,8 @@
             }
         };
 
-        xhr.send();
-        
+        xhr.send(null);
+
         function colour(chnRed, chnGreen, chnBlue) {
             this.decToHexConverter = function () {
                 return ("#" + this.red.toString(16) + this.green.toString(16) + this.blue.toString(16)).toUpperCase();
@@ -228,23 +248,19 @@
 
             resetUsersInputs();
 
-            writeFile(data);
+            hideOverlay();
+            // writeFile(data);
         }
 
         function writeFile(data) {
             var json = JSON.stringify(data);
-            var xhr = new XMLHttpRequest();
+            var file = new Blob([json], {
+                type: "data:application/json;charset=utf-8"
+            });
 
-            xhr.open('POST', '/storage/', true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            
-            xhr.onload = function (e) {
-                if (this.status == 200) {
-                    console.log(this.response);
-                }
-            };
+            file.name = "data.json";
 
-            xhr.send(json);
+            window.open(URL.createObjectURL(file));
         }
 
         function createRow(rowID, index, gender, sex, sexuality) {
@@ -290,6 +306,44 @@
 
             resetUsersInputs();
         }
+
+        function showOverlay() {
+            var overlay = document.getElementById("overlay");
+            var entries = document.getElementById("containerEntries");
+
+            if (overlay.classList.contains("hidden")) {
+                overlay.classList.remove("hidden");
+                overlay.classList.add("show");
+
+                entries.classList.add("blur");
+            }
+        }
+
+        function hideOverlay() {
+            var overlay = document.getElementById("overlay");
+            var entries = document.getElementById("containerEntries");
+
+            if (overlay.classList.contains("show")) {
+                overlay.classList.remove("show");
+                overlay.classList.add("hidden");
+
+                entries.classList.remove("blur");
+            }
+        }
+
+        /*window.onbeforeunload = function (e) {
+            e = e || window.event;
+
+            // For IE and Firefox prior to version 4
+            if (e) {
+                writeFile(data);
+                e.returnValue = 'Any string';
+            }
+
+            writeFile(data);
+            // For Safari
+            return 'Any string';
+        };*/
     </script>
 </body>
 
